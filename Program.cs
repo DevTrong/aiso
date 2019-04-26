@@ -7,7 +7,8 @@ namespace aiso
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MagicSquare magicSquare = new MagicSquare();
+            magicSquare.Solve(4);
         }
     }
 }

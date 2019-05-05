@@ -8,7 +8,10 @@ namespace aiso
         static void Main(string[] args)
         {
             MagicSquare magicSquare = new MagicSquare();
-            magicSquare.Solve(4);
+            // magicSquare.Solve(3);
+
+            Binoxxo binoxxo = new Binoxxo();
+            binoxxo.solve();
         }
     }
 }

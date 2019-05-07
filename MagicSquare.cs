@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Google.OrTools;
@@ -27,6 +28,13 @@ namespace aiso
 				solver.Add(targetExpression == columnSum);
 			}
 
+			solver.Add(
+				(from x in range select board[x, x]).ToArray().Sum() == targetExpression
+			);
+			solver.Add(
+				(from x in range select board[size - 1 - x, x]).ToArray().Sum() == targetExpression
+			);
+
 			DecisionBuilder db = solver.MakePhase(flatten, Solver.INT_VAR_SIMPLE, Solver.INT_VALUE_SIMPLE);
 			solver.NewSearch(db);
 			while (solver.NextSolution())
@@ -35,6 +43,8 @@ namespace aiso
 			}
 
 			solver.EndSearch();
+
+			Console.WriteLine(solver.Solutions());
 		}
 	}
 }
